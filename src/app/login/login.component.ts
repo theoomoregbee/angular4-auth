@@ -5,9 +5,6 @@ import { Component, OnInit } from '@angular/core';
   template: `
   <div class="container">
     <div class="card card-container">
-    <div class="alert alert-success" role="alert">
-      <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-    </div>
       <form>
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
