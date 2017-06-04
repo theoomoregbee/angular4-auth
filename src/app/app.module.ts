@@ -12,6 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {UserService} from "./providers/user.service";
 import {AuthService} from "./providers/auth.service";
+import {DashboardModule} from "./dashboard/dashboard.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AuthService} from "./providers/auth.service";
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    DashboardModule
   ],
   providers: [
     UserService,
