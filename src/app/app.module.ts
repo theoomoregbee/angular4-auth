@@ -10,6 +10,7 @@ import { HttpModule, XHRBackend } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {UserService} from "./providers/user.service";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [
+    UserService,
     {
       provide: ApiHandler,
       useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => new ApiHandler(backend, defaultOptions),
