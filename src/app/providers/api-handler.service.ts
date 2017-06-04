@@ -3,7 +3,7 @@ import { Http, ConnectionBackend, RequestOptions, RequestMethod, RequestOptionsA
 import { Observable } from "rxjs/Observable";
 import { environment } from "environments/environment";
 
-import 'rxjs/add/operator/catch'; 
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class ApiHandler extends Http {
   }
 
 /**
- * 
+ *
  * @param service_url this is our api method url
  * @param method this can either be RequestMethod.POST, RequestMethod.GET etc...
  * @param params this is the data we are sending across to our api backend for processing
@@ -29,12 +29,12 @@ export class ApiHandler extends Http {
 
   /**
    * Build API url.
-   * and we remove any leading / from the service calls since 
+   * and we remove any leading / from the service calls since
    * we are not needing then in making request calls
    * e.g localhost:1337//base... to localhost:1337/base..
-   * 
+   *
    * which our backend host is coming from the environment
-   * 
+   *
    * @param url
    * @returns {string}
    */
@@ -48,8 +48,10 @@ export class ApiHandler extends Http {
 
   /**
    * Request options is used to manipulate and handle needed information before
-   * it is sent to server and it also adds our token authorization header if it is 
+   * it is sent to server and it also adds our token authorization header if it is
    * present in our storage
+   * @param method
+   * @param params
    * @param options
    * @returns {RequestOptionsArgs}
    */
@@ -75,15 +77,15 @@ export class ApiHandler extends Http {
 
 
   /**
-   * Error handler. 
-   * do any middle ware checking before sending it to observable caller 
-   * 
+   * Error handler.
+   * do any middle ware checking before sending it to observable caller
+   *
    * @param error
    * @param caught
    * @returns {ErrorObservable}
    */
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    
+
     return Observable.throw(error);
   }
 
