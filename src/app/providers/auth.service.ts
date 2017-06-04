@@ -43,11 +43,11 @@ export class AuthService {
 
   /**
    * this returns the token for the user
-   * @param username
+   * @param email
    * @param password
    */
-  authenticate(username: string, password: string): Observable<string> {
-    return this._apiHandler.callService("/user/login", RequestMethod.Post, {username: username, password: password})
+  authenticate(email: string, password: string): Observable<string> {
+    return this._apiHandler.callService("/user/login", RequestMethod.Post, {email: email, password: password})
       .map(res => <string>res.text())
       .do((token: string) => {
         localStorage.setItem('token', token);
