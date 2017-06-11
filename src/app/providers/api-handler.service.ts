@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Http, ConnectionBackend, RequestOptions, RequestMethod, RequestOptionsArgs, Headers } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-import { environment } from "environments/environment";
+import {Injectable} from '@angular/core';
+import {Http, ConnectionBackend, RequestOptions, RequestMethod, RequestOptionsArgs, Headers} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+import {environment} from "environments/environment";
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -14,13 +14,13 @@ export class ApiHandler extends Http {
     super(backend, defaultOptions);
   }
 
-/**
- *
- * @param service_url this is our api method url
- * @param method this can either be RequestMethod.POST, RequestMethod.GET etc...
- * @param params this is the data we are sending across to our api backend for processing
- * @param options incase we want to pass our custom options like headers and all
- */
+  /**
+   *
+   * @param service_url this is our api method url
+   * @param method this can either be RequestMethod.POST, RequestMethod.GET etc...
+   * @param params this is the data we are sending across to our api backend for processing
+   * @param options incase we want to pass our custom options like headers and all
+   */
   callService(service_url, method: RequestMethod, params: any = {}, options?: RequestOptionsArgs): Observable<any> {
     return super.request(this.getFullUrl(service_url), this.requestOptions(method, params, options))
       .catch(this.onCatch);
@@ -80,13 +80,15 @@ export class ApiHandler extends Http {
    * Error handler.
    * do any middle ware checking before sending it to observable caller
    *
+   * convert the error to normal text
+   *
    * @param error
    * @param caught
    * @returns {ErrorObservable}
    */
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
 
-    return Observable.throw(error);
+    return Observable.throw(error.text());
   }
 
 }

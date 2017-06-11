@@ -113,7 +113,8 @@ export class LoginComponent implements OnInit {
         this._router.navigate([to]);
       }, (error)=> {
         this.loading = false;
-        alert(error);
+        this.message = error;
+      //  alert(error);
         console.error("auth error", error);
       });
 
