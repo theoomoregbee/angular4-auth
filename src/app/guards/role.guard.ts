@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from "../providers/user.service";
 
 @Injectable()
 export class RoleGuard implements CanActivate {
 
-  constructor(private _userService: UserService) {
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
 
@@ -31,8 +31,10 @@ export class RoleGuard implements CanActivate {
 
     let allow = user.roles.indexOf(next.data.role) > -1;
 
-    if (allow == false)
+    if (allow == false) {
       alert("you can't go here");
+      this._router.navigate(['dashboard/home']);
+    }
 
     return allow;
   }
