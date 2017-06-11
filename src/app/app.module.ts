@@ -13,6 +13,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {UserService} from "./providers/user.service";
 import {AuthService} from "./providers/auth.service";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {AuthGuard} from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
     DashboardModule
   ],
   providers: [
+    AuthGuard,
     UserService,
     AuthService,
     {
