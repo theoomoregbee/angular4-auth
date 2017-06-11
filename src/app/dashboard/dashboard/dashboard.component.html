@@ -1,6 +1,22 @@
-<p>
-  dashboard works!
-</p>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+
+  <a class="navbar-brand" href="#">Auth Application</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="active" class="nav-item">
+        <a class="nav-link" routerLink="home">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="settings">Settings</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="admin">Admin</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
 <router-outlet>
 
 </router-outlet>
