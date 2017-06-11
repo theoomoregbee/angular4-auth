@@ -28,6 +28,12 @@ export class RoleGuard implements CanActivate {
 
     let user = this._userService.get();
 
-    return user.roles.indexOf(next.data.role) > -1;
+
+    let allow = user.roles.indexOf(next.data.role) > -1;
+
+    if (allow == false)
+      alert("you can't go here");
+
+    return allow;
   }
 }

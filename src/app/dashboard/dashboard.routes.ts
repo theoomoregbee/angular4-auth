@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {AdminComponent} from "./admin/admin.component";
 import {AuthGuard} from "../guards/auth.guard";
+import {RoleGuard} from "../guards/role.guard";
 /**
  * Created by theophy on 04/06/2017.
  */
@@ -13,7 +14,9 @@ export const dashboardRoutes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'settings', component: SettingsComponent},
-    {path: 'admin', component: AdminComponent},
+    {path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data:{
+      role: "ADMIN"
+    }},
   ]
   }
 ];
