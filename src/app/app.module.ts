@@ -16,6 +16,11 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {AuthGuard} from "./guards/auth.guard";
 import {RoleGuard} from "./guards/role.guard";
 
+
+export function handlerFunc(backend: XHRBackend, defaultOptions: RequestOptions){
+  return new ApiHandler(backend, defaultOptions);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +42,7 @@ import {RoleGuard} from "./guards/role.guard";
     AuthService,
     {
       provide: ApiHandler,
-      useFactory: (backend: XHRBackend, defaultOptions: RequestOptions) => new ApiHandler(backend, defaultOptions),
+      useFactory: handlerFunc,//(backend: XHRBackend, defaultOptions: RequestOptions) => new ApiHandler(backend, defaultOptions),
       deps: [XHRBackend, RequestOptions]
     }],
   bootstrap: [AppComponent]
