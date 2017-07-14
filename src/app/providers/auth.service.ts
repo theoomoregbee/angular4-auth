@@ -35,6 +35,18 @@ export class AuthService {
   }
 
   /**
+   * this is used to logout the user
+   */
+  logout(): Observable<string> {
+    return this._apiHandler.callService(`/user/logout/${this._userService.get().id}`, RequestMethod.Get)
+      .map(res => <string>res.text())
+      .do(() => {
+        this.clear();
+      });
+  }
+
+
+  /**
    * this is used to clear anything that needs to be removed
    */
   clear(): void {
